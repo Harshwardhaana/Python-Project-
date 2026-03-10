@@ -1,0 +1,30 @@
+import random
+
+# Create suits and ranks
+suits = ["Diamonds", "Spades", "Hearts", "Clubs"]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
+
+# Create a full deck of 52 cards
+deck = [(rank, suit) for suit in suits for rank in ranks]
+
+# Shuffle the deck
+random.shuffle(deck)
+
+# Function to pick one card
+def pick_one_card():
+    card = deck.pop()
+    return f"The {card[0]} of {card[1]}"
+
+# Function to pick multiple cards
+def pick_multiple_cards(n):
+    if n > len(deck):
+        return "Not enough cards left in the deck"
+    return [f"The {rank} of {suit}" for rank, suit in (deck.pop() for _ in range(n))]
+
+# ---- MAIN OUTPUT ----
+print("Random Card:")
+print(pick_one_card())
+
+print("\nThree More Cards:")
+for card in pick_multiple_cards(3):
+    print(card)
