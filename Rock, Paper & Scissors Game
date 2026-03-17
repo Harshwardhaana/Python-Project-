@@ -1,0 +1,34 @@
+import random
+
+choices = ["Rock", "Paper", "Scissors"]
+cpu_score = 0
+player_score = 0
+
+while True:
+    computer = random.choice(choices)
+    player = input("\nRock, Paper or Scissors? (or End to stop): ").capitalize()
+
+    if player == "End":
+        print("\nFinal Scores:")
+        print(f"CPU: {cpu_score}")
+        print(f"Player: {player_score}")
+        break
+
+    if player not in choices:
+        print("Invalid choice! Please choose Rock, Paper, or Scissors.")
+        continue
+
+    print(f"Computer chose: {computer}")
+
+    if player == computer:
+        print("Tie!")
+    elif (
+        (player == "Rock" and computer == "Scissors") or
+        (player == "Paper" and computer == "Rock") or
+        (player == "Scissors" and computer == "Paper")
+    ):
+        print("You win!")
+        player_score += 1
+    else:
+        print("You lose!")
+        cpu_score += 1
